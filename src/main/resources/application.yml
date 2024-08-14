@@ -1,0 +1,25 @@
+## Server Config
+server:
+  port: 9005
+spring:
+  application:
+    name: micro-spring
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.SQLServerDialect
+      database-platform: org.hibernate.dialect.SQLServerDialect
+      generate-ddl: true
+      show-sql: true
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=ude01b7ce69c;encrypt=false
+    username: SA
+    password: SqlServ3rM4c
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 30000          # Tiempo máximo en milisegundos que HikariCP esperará para obtener una conexión
+      idle-timeout: 600000               # Tiempo máximo en milisegundos que una conexión puede estar inactiva en el pool
+      max-lifetime: 1800000              # Tiempo máximo en milisegundos que una conexión puede estar viva en el pool
+      maximum-pool-size: 10              # Número máximo de conexiones en el pool
+      minimum-idle: 5                    # Número mínimo de conexiones inactivas en el pool
