@@ -1,10 +1,9 @@
 package com.proyectomicro.MicroEn.consumer;
 
-import com.proyectomicro.MicroEn.models.CategoryConfigRequest;
 import com.proyectomicro.MicroEn.models.MobileDevice;
 import com.proyectomicro.MicroEn.models.ResponseData;
 import com.proyectomicro.MicroEn.models.RestConsumerRequest;
-import com.proyectomicro.MicroEn.operation.FetchConsultaOperation;
+import com.proyectomicro.MicroEn.operation.FeignConsultaOperation;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +14,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FetchConsultaDelegate {
-    private static final Logger LOG = LoggerFactory.getLogger(FetchConsultaDelegate.class);
+public class FeignConsultaDelegate {
+    private static final Logger LOG = LoggerFactory.getLogger(FeignConsultaDelegate.class);
 
     @Autowired
-    @Qualifier("fetchConsultaOperation")
-    private final FetchConsultaOperation fetchConsultaOperation;
+    @Qualifier("feignConsultaOperation")
+    private final FeignConsultaOperation feignConsultaOperation;
 
-    public ResponseEntity<ResponseData<MobileDevice>> consultaFetchConfiguration(RestConsumerRequest<MobileDevice> restConsumerRequest){
+    public MobileDevice consultaFeignConfiguration(RestConsumerRequest<MobileDevice> restConsumerRequest){
         LOG.info("Entered /Scotia-Consulta-Fetch-configuration RequestDelegate");
-        return fetchConsultaOperation.handleFetch(restConsumerRequest);
+        return feignConsultaOperation.handleFeign(restConsumerRequest);
     }
 }
