@@ -20,7 +20,7 @@ public class FeignServiceImpl implements FeignService {
     public MobileDevice consultaFeign(Long id) {
         LOG.info("Entered in Scotia Feign Service...");
         try {
-            return microEnFeign.consultaFeign(id).getBody().getData();
+            return microEnFeign.consultaFeign(id).getBody().get(0);
 
         } catch (Exception e) {
             LOG.error("Error occurred while processing the db", e);

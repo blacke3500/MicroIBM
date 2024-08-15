@@ -1,10 +1,8 @@
 package com.proyectomicro.MicroEn.consumer;
 
 import com.proyectomicro.MicroEn.models.MobileDevice;
-import com.proyectomicro.MicroEn.models.ResponseData;
 import com.proyectomicro.MicroEn.models.RestConsumerRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
