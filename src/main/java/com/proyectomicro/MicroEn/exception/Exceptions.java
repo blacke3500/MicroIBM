@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import java.time.Instant;
 import java.util.UUID;
 
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Exceptions {
@@ -43,7 +45,14 @@ public enum Exceptions {
             .uuid(UUID.randomUUID())
             .severity(SeverityEnum.WARNING)
             .timestamp(Instant.now())
-            .build(), HttpStatus.INTERNAL_SERVER_ERROR);
+            .build(), HttpStatus.INTERNAL_SERVER_ERROR),
+    NULL_RESPONSE(Notification.builder()
+            .code(SeverityEnum.ERROR, "MICROEN_OLIVER", "XXXX")
+            .message("Received null or empty response from Feign client")
+            .uuid(UUID.randomUUID())
+            .severity(SeverityEnum.ERROR)
+            .timestamp(Instant.now())
+            .build(), INTERNAL_SERVER_ERROR);
 
     private Notification notification;
     private  HttpStatus httpStatus;

@@ -44,6 +44,10 @@ public class ScotiaConsultaDBService {
             LOG.error("Category not found launching CustomException");
             throw  new CustomException(Exceptions.CATEGORY_NOT_FOUND);
 
+        } catch (CustomException e) {
+            // Las CustomExceptions son lanzadas directamente sin necesidad de ser envueltas
+            throw e;
+
         } catch (Exception e) {
             LOG.error("Error occurred while processing the db", e);
             throw  new CustomException(Exceptions.DATABASE_ERROR);

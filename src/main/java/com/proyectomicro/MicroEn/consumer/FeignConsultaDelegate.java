@@ -21,7 +21,7 @@ public class FeignConsultaDelegate {
     @Qualifier("feignConsultaOperation")
     private final FeignConsultaOperation feignConsultaOperation;
 
-    public MobileDevice consultaFeignConfiguration(RestConsumerRequest<MobileDevice> restConsumerRequest){
+    public ResponseData<MobileDevice> consultaFeignConfiguration(RestConsumerRequest<ResponseData<MobileDevice>> restConsumerRequest){
         LOG.info("Entered /Scotia-Consulta-Fetch-configuration RequestDelegate");
         return feignConsultaOperation.handleFeign(restConsumerRequest);
     }

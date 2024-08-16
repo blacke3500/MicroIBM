@@ -18,12 +18,12 @@ public class FeignConsultaOperation {
 
     private static final Logger LOG = LoggerFactory.getLogger(FeignConsultaOperation.class);
 
-    public MobileDevice handleFeign(RestConsumerRequest<MobileDevice> consumerRequest){
+    public ResponseData<MobileDevice> handleFeign(RestConsumerRequest<ResponseData<MobileDevice>> consumerRequest){
         LOG.info("Entered /scotia-consulta-feign Operation");
         return prepareConsumerResponse(consumerRequest);
     }
 
-    private MobileDevice prepareConsumerResponse(RestConsumerRequest<MobileDevice> consumerRequest) {
+    private ResponseData<MobileDevice> prepareConsumerResponse(RestConsumerRequest<ResponseData<MobileDevice>> consumerRequest) {
         LOG.info("Entered /scotia-consulta-fetch In prepareConsumerResponse");
         Long id = Long.valueOf(consumerRequest.getPathParams().get("id"));
         return feignService.consultaFeign(id);
